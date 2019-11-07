@@ -7,8 +7,10 @@ int main(void)
   
 	LPC_GPIO0->FIODIR|=01<<11; // for output
   
-	LPC_SC->EXTMODE=0X1;
-	LPC_SC->EXTPOLAR=0X1;
+	// rising edge on 0
+	LPC_SC->EXTMODE=0X1; 
+	LPC_SC->EXTPOLAR=0X1; 
+	
 	NVIC_EnableIRQ(EINT0_IRQn);
 	while(1);
 }

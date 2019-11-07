@@ -53,7 +53,11 @@ while(1)
 {
 	LPC_ADC->ADCR = (1<<4)|(1<<21)|(1<<24);//0x01200001; //AD0.4 start conversion 
 	while(!(LPC_ADC->ADGDR & 1<<31));
-			adc_temp1 = LPC_ADC->ADDR4;
+	adc_temp1 = (LPC_ADC->ADDR4 & (0xFFF << 4)) >> 4;
+	
+	
+	
+	
 	for(i=0;i<2000;i++);
 	LPC_ADC->ADCR = (1<<5)|(1<<21)|(1<<24);//0x01200001; //AD0.5 start conversion 
 		while(!(LPC_ADC->ADGDR & 1<<31));	
